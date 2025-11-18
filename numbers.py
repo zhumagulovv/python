@@ -1,6 +1,27 @@
+import  random
+
+# int
+# float
+# complex
+
 x = 20
+y = 2.8
+z = 1j
 
-print(x)
-print("Hello")
+b = int(y)
+c = float(x)
 
-print("remake")
+print(type(x))
+print(type(y))
+print(type(z))
+
+print(b)
+print(c)
+
+
+print(type(b))
+print(type(c))
+
+
+# random number
+print(random.randrange(1, 10))
