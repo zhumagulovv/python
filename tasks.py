@@ -6,6 +6,7 @@
 # Добавить "orange" в конец списка
 # Поменять "cherry" на "grape"
 # Вывести итоговый список
+from functools import reduce
 
 fruits = ["apple", "banana", "cherry", "banana", "mango"]
 
@@ -76,3 +77,23 @@ average = sum(student["grades"]) / len(student["grades"])
 
 print(average)
 print(student)
+
+# Создать список из 10 чисел и вывести сумму всех элементов
+
+numbers = [1,2,3,4,5,6,7,8,9,10]
+
+# variant №1
+print(sum(numbers))
+
+# variant №2
+sum = 0
+
+for x in numbers:
+    sum += x
+
+print(sum)
+
+# variant №3
+total = reduce(lambda a, b: a + b, numbers)
+
+print(total)
