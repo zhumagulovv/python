@@ -79,7 +79,7 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
             '•Daewoo (Matiz, Nexia)\n'
             '•Бюджетными китайскими электрокарами (Auchan A600 EV, Mini EV)\n'
             '•Mercedes-Benz E-класса, Hyundai.\n'
-            'Напишите модель, чтобы уточнить.'
+            'Напишите модель, чтобы уточнить детали.'
         )
 
     elif text == '💰 Цены':
