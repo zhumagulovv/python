@@ -1,4 +1,4 @@
-from telegram import Update, ReplyKeyboardMarkup
+from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
@@ -38,13 +38,10 @@ MAP_URL = 'https://2gis.kg/bishkek/geo/15763234351062857/74.586745,42.871584'
 
 MAIN_KEYBOARD = ReplyKeyboardMarkup(
     [
-        ['🚗 Наличие авто', '💰 Цены'],
-        ['🏦 Кредит', '🧪 Тест-драйв'],
-        ['💰 Цены', '💰 Стоимость'],
-        ['📄 Рассрочка', '🔄 Трейд'],
-        ['🔄 Trade', '📍 Адрес'],
-        ['📍 Мы на карте', '⏰ График'],
-        ['⏰ Время', '📞 Контакт'],
+        ['🚗 Наличие авто', '💰 Цены/Стоимость'],
+        ['🏦 Кредит/Рассрочка','🔄 Trade-In/Трейд'],
+        ['📞 Контакт', '🧪 Тест-драйв'],
+        ['📍 Адрес/Карта', '⏰ График работы'],
     ],
     resize_keyboard=True
 )
@@ -68,6 +65,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 # Ответы на кнопки
+# Ответы на кнопки
 async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
 
@@ -79,37 +77,46 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
             '•Daewoo (Matiz, Nexia)\n'
             '•Бюджетными китайскими электрокарами (Auchan A600 EV, Mini EV)\n'
             '•Mercedes-Benz E-класса, Hyundai.\n'
-            'Напишите модель, чтобы уточнить детали.'
         )
 
-    elif text == '💰 Цены':
+    elif text == '💰 Цены/Стоимость':
         await update.message.reply_text(
             '💵 Цены зависят от модели и комплектации.\n'
-            'Напишите модель автомобиля.'
         )
 
-    elif text == '🏦 Кредит':
+    elif text == '🏦 Кредит/Рассрочка':
         await update.message.reply_text(
             '🏦 Авто в кредит:\n'
             '• Первоначальный взнос от 20%\n'
-            '• Срок до 36 месяцев'
+            '• Срок до 36 месяцев\n\n'
+            '📞 Для подробной информации свяжитесь с менеджером:\n'
+            '+996774814583',
         )
 
     elif text == '🧪 Тест-драйв':
         await update.message.reply_text(
             '🧪 Тест-драйв по предварительной записи.\n'
-            'Оставьте номер телефона.'
         )
 
-    elif text == '📍 Мы на карте':
+    elif text == '📍 Адрес/Карта':
         await update.message.reply_text(
             f'📍 Наш адрес:\n г. Бишкек, ул. Табышалиева 29\n\n'
             f'👉 Открыть на карте:\n{MAP_URL}'
         )
 
-    elif text == "🔄 Trade":
+    elif text == '🔄 Trade-In/Трейд':
         await update.message.reply_text(
             "🔄 Trade-In доступен. Оценка бесплатная."
+        )
+
+    elif text == '⏰ График работы':
+        await update.message.reply_text(
+            "⏰ Работаем ежедневно с 09:00 до 19:00"
+        )
+
+    elif text == '📞 Контакт':
+        await update.message.reply_text(
+            "📞 +996 774 814 583\n📧 autosalon_okurmen@gmail.com"
         )
 
     else:
